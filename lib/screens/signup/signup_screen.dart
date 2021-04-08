@@ -86,8 +86,24 @@ class _SignupScreenState extends State<SignupScreen> {
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 24),
                   height: 50,
-                  child: RaisedButton(
-                    color: Colors.pink,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                        (states) {
+                          if (states.contains(MaterialState.disabled)) {
+                            return Colors.pink.withAlpha(150);
+                          } else {
+                            return Colors.pink;
+                          }
+                        }
+                      ),
+                      elevation: MaterialStateProperty.all(0),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        )
+                      ),
+                    ),
                     child: snapshot.data.state == SignupState.LOADING
                       ?
                     CircularProgressIndicator(
@@ -102,11 +118,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    disabledColor: Colors.pink.withAlpha(150),
                     onPressed: snapshot.data.state == SignupState.LOADING ? null : _signUp,
                   ),
                 ),

@@ -84,32 +84,40 @@ class PasswordField extends StatelessWidget {
   }
 
   Color _getColor(int level){
+    Color color;
     switch(level){
       case 0:
-        return Colors.red;
+        color = Colors.red;
+        break;
       case 1:
-        return Colors.deepOrange;
+        color = Colors.deepOrange;
+        break;
       case 2:
-        return Colors.amber;
+        color = Colors.amber;
+        break;
       case 3:
-        return Colors.green;
-      deafult:
-        return Colors.red;
+        color = Colors.green;
+        break;
     }
+    return color;
   }
 
-  _getText(int level) {
+  String _getText(int level) {
+    String text;
     switch(level) {
       case 0:
-        return 'Senha muito fraca';
+        text = 'Senha muito fraca';
+        break;
       case 1:
-        return 'Senha razoavelmente fraca';
+        text = 'Senha razoavelmente fraca';
+        break;
       case 2:
-        return 'Senha razoavelmente forte';
+        text = 'Senha razoavelmente forte';
+        break;
       case 3:
-        return 'Senha forte';
-        deafult:
-        return '';
+        text = 'Senha forte';
+        break;
     }
+    return text;
   }
 }

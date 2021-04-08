@@ -19,12 +19,21 @@ class LoginButton extends StatelessWidget {
           loading: false,
         ),
         builder: (context, snapshot){
-          return RaisedButton(
-            color: Colors.pink,
-            disabledColor: Colors.pink.withAlpha(150),
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25),
+          return ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (states) {
+                  if (states.contains(MaterialState.disabled)) {
+                    return Colors.pink.withAlpha(150);
+                  } else {
+                    return Colors.pink;
+                  }
+                }
+              ),
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              )),
+              elevation: MaterialStateProperty.all(0),
             ),
             onPressed: snapshot.data.enable ? () async {
               final bool success = await loginBloc.loginWithEmail();

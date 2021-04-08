@@ -61,8 +61,14 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
           child: Container(
             height: 50,
             margin: _edgeInsetsAnimation.value,
-            child: RaisedButton(
-              color: Colors.pink,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.pink),
+                elevation: MaterialStateProperty.all(0),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(_radiusAnimation.value)
+                ))
+              ),
               child: const Text(
                 'Filtrar',
                 style: TextStyle(
@@ -71,11 +77,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              elevation: 0,
               onPressed: widget.onTap,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(_radiusAnimation.value)
-              ),
             ),
           ),
         );

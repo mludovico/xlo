@@ -1,4 +1,4 @@
-package br.com.ciolfi.xlo
+package br.com.mludovico.xlo
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

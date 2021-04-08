@@ -17,12 +17,21 @@ class FacebookButton extends StatelessWidget {
         stream: loginBloc.outState,
         initialData: LoginBlocState(LoginState.IDLE),
         builder: (context, snapshot) {
-          return RaisedButton(
-            color: Color(0xFF3b5998),
-            disabledColor: Color(0xFF3b5998).withAlpha(190),
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25),
+          return ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.disabled)) {
+                      return Color(0xFF3b5998).withAlpha(190);
+                    } else {
+                      return Color(0xFF3b5998);
+                    }
+                  }
+                ),
+                elevation: MaterialStateProperty.all(0),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25)
+                ))
             ),
             onPressed: snapshot.data.state == LoginState.LOADING_FACE ? null : () async {
               final bool success = await loginBloc.loginWithFacebook();
@@ -46,6 +55,5 @@ class FacebookButton extends StatelessWidget {
         }
       ),
     );
-    ;
   }
 }
