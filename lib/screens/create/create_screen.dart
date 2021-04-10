@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:xlo/blocs/create_bloc.dart';
 import 'package:xlo/blocs/drawer_bloc.dart';
+import 'package:xlo/blocs/home_bloc.dart';
 import 'package:xlo/common/cep_field.dart';
 import 'package:xlo/common/custom_drawer/custom_drawer.dart';
 import 'package:xlo/helpers/format_field.dart';
@@ -169,18 +170,18 @@ class _CreateScreenState extends State<CreateScreen> {
                         if (success) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Container(
-                                color: Colors.lightGreenAccent,
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.check_circle),
-                                    Text('Anúncio inserido com sucesso'),
-                                  ],
-                                ),
+                              backgroundColor: Colors.greenAccent,
+                              content: Row(
+                                children: [
+                                  Icon(Icons.check_circle, color: Colors.white,),
+                                  SizedBox(width: 8,),
+                                  Text('Anúncio inserido com sucesso'),
+                                ],
                               ),
                             )
                           );
-                          Provider.of<DrawerBloc>(context).setPage(0);
+                          Provider.of<HomeBloc>(context, listen: false).addAd(ad);
+                          Provider.of<DrawerBloc>(context, listen: false).setPage(0);
                         }
                       }
                     },

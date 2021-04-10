@@ -21,7 +21,7 @@ class PriceRangeField extends StatelessWidget {
             ),
             keyboardType: TextInputType.numberWithOptions(decimal: false),
             inputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
               RealInputFormatter(centavos: false),
             ],
             initialValue: filter.minPrice?.toString(),
@@ -47,7 +47,7 @@ class PriceRangeField extends StatelessWidget {
             ),
             keyboardType: TextInputType.numberWithOptions(decimal: false),
             inputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
               RealInputFormatter(centavos: false),
             ],
             initialValue: filter.maxPrice?.toString(),

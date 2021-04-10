@@ -9,7 +9,7 @@ class CustomHeader extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(builder: (_)=>LoginScreen()));
       },
       child: Container(
-        height: 120,
+        height: 100,
         color: Theme.of(context).primaryColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
